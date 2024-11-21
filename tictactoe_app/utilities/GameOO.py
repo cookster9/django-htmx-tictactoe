@@ -1,8 +1,8 @@
 class GameOO:
-    def __init__(self, board=None, playerTurn=1):
+    def __init__(self, board=None, playerTurn=1, winner=None):
         self.board = 9*[''] if board is None else board
         self.playerTurn=playerTurn
-        self.winner=None
+        self.winner=winner
     
     def printBoard(self):
         print(self.board[0:3])
