@@ -20,6 +20,21 @@ def startGame(request):
         return HttpResponse("Unsupported HTTP method", status=405)
 
 
+def getWinner(request, pk):
+    gameFromDB = get_object_or_404(Game, pk=pk)
+    winner = gameFromDB.winner
+    html = ''
+    print(winner)
+    if(winner==1):
+        html="""<p>Player 1 wins!!</p>"""
+    elif(winner==2):
+        html="""<p>Player 2 wins!!</p>"""
+    elif(winner==3):
+        html="""<p>It's a tie!</p>"""
+    else:
+        html="""<p>You broke the game</p>"""
+    return HttpResponse(html)
+
 def playGame(request, pk):
     gameFromDB = get_object_or_404(Game, pk=pk)
     board_ary = gameFromDB.board_ary
@@ -28,7 +43,8 @@ def playGame(request, pk):
     if request.method == "GET":
         # Handle GET request
         #simply return game state
-        context = {"board": board_list, "id": str(gameFromDB.id), "player_turn": str(game.playerTurn)}
+        context = {"board": board_list, "id": str(gameFromDB.id), "player_turn": str(game.playerTurn)
+                   ,"winner": game.winner}
         return render(request, "tictactoe_app/ttt.html", context)
     elif request.method == "POST":
         # try to make the move
@@ -42,7 +58,11 @@ def playGame(request, pk):
         http_response = """<div hx-swap-oob="outerHTML:#player-p">
                             <p id="player-p">Player turn: """+str(game.playerTurn)+"""</p>
                             </div>"""+game.board[square]
-        return HttpResponse(http_response, content_type="text/html")
+        
+        response_obj=HttpResponse(http_response, content_type="text/html")
+        if(game.winner is not None):
+            response_obj.headers['Hx-Trigger']='winnerFound'
+        return response_obj
     else:
         # Handle other HTTP methods if needed
         return HttpResponse("Unsupported HTTP method", status=405)
