@@ -1,0 +1,16 @@
+{% extends "tictactoe_app/base.html" %}
+
+{% block content %}
+{% if board %}
+    <ul>
+    {% for square in board %}
+        {% if forloop.counter0 == 3 or forloop.counter0 == 6%}
+            <br>
+        {% endif %}
+        <button hx-post="/{{ id }}/" hx-target="this" hx-swap="textContent" hx-vals='"coord": "{{ forloop.counter0 }}"'>{{ square }}</button>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Game board not found</p>
+{% endif %}
+{% endblock %}
