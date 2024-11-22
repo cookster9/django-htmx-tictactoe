@@ -13,7 +13,7 @@
         {% if forloop.counter0 == 3 or forloop.counter0 == 6%}
             <br>
         {% endif %}
-        <button hx-post="/{{ id }}/" hx-target="this" hx-swap="innerHTML" hx-vals='"coord": "{{ forloop.counter0 }}"'>{{ square }}</button>
+        <button class="w-10 h-10 rounded bg-sky-100 hover:bg-sky-300" hx-post="/{{ id }}/" hx-target="this" hx-swap="innerHTML" hx-vals='"coord": "{{ forloop.counter0 }}"'>{{ square }}</button>
     {% endfor %}
     </ul>
 {% else %}
