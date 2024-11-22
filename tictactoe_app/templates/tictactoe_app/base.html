@@ -1,10 +1,20 @@
+{% load static %}
 <!doctype html>
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
+    <link href="{% static 'tictactoe_app/output.css' %}" rel="stylesheet">
     <title>My test page</title>
   </head>
   <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <nav class="flex items-center justify-start p-4">
+      <div class="p-2">
+        Home
+      </div>
+      <div class="p-2"> 
+        Games
+      </div>
+    </nav>
     {% block content %}
         <p>content</p>
     {% endblock %}
