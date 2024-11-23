@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse
 from tictactoe_app.models import Game
-from django.utils.html import format_html
+from django.views.decorators.http import require_http_methods, require_GET
 
 from tictactoe_app.utilities.GameOO import GameOO
 
 
+@require_http_methods(['GET','POST'])
 def startGame(request):
     if request.method == "GET":
         # Handle GET request
@@ -20,6 +21,7 @@ def startGame(request):
         return HttpResponse("Unsupported HTTP method", status=405)
 
 
+@require_GET()
 def getWinner(request, pk):
     gameFromDB = get_object_or_404(Game, pk=pk)
     winner = gameFromDB.winner
@@ -35,6 +37,8 @@ def getWinner(request, pk):
         html="""<p>You broke the game</p>"""
     return HttpResponse(html)
 
+
+@require_http_methods(['GET','POST'])
 def playGame(request, pk):
     gameFromDB = get_object_or_404(Game, pk=pk)
     board_ary = gameFromDB.board_ary
