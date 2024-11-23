@@ -3,8 +3,8 @@
 {% block content %}
 <div class="flex justify-center">
     <div class="flex flex-col w-44">
-    {% if winner is not None %}
-        <p>Player {{ winner}} wins!</p>
+    {% if winner_message is not None %}
+        <p>{{ winner_message}}</p>
     {% else %}
         <p hx-get="/{{ id }}/winner/" hx-trigger="winnerFound from:body" hx-target="this" hx-swap="outerHTML" hidden>Winner</p>
     {% endif %}

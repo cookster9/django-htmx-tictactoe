@@ -1,0 +1,33 @@
+{% extends "tictactoe_app/base.html" %}
+
+{% block content %}
+    {% if object_list is empty %}
+        <p>No games yet!</p><a href={% url 'startGame' %}>Go Home</a>
+    {% else %}
+        <table class="">
+            <tr>
+                <th>ID</th>
+                <th>Player Turn</th>
+                <th>Winner</th>
+            </tr>
+            {% for game in object_list %}
+            <tr>
+                <td><a href="{% url 'playGame' pk=game.id %}">{{game.id}}</a></td>
+                <td>{% if game.winner is None %}
+                        Player {{game.player_turn}}
+                    {% else %}
+                        Game Over
+                    {% endif %}</td>
+                <td>{% if game.winner is None %}
+                        In progress
+                    {% elif game.winner == 3 %}
+                        Tie
+                    {% else %}
+                        Player {{game.winner}}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

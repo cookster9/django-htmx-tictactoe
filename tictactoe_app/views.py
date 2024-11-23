@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from tictactoe_app.models import Game
 from django.views.decorators.http import require_http_methods, require_GET
+from django.views.generic.list import ListView
 
 from tictactoe_app.utilities.GameOO import GameOO
 
@@ -21,7 +22,7 @@ def startGame(request):
         return HttpResponse("Unsupported HTTP method", status=405)
 
 
-@require_GET()
+@require_GET
 def getWinner(request, pk):
     gameFromDB = get_object_or_404(Game, pk=pk)
     winner = gameFromDB.winner
@@ -47,8 +48,18 @@ def playGame(request, pk):
     if request.method == "GET":
         # Handle GET request
         #simply return game state
+        winMessage = None
+        if(game.winner is not None):
+            if(game.winner ==1):
+                winMessage = 'Player 1 wins!'
+            elif(game.winner ==2):
+                winMessage = 'Player 2 wins!'
+            elif(game.winner ==3):
+                winMessage = 'It''s a tie!'
+            else:
+                winMessage = 'Game is broken!'
         context = {"board": board_list, "id": str(gameFromDB.id), "player_turn": str(game.playerTurn)
-                   ,"winner": game.winner}
+                   ,"winner_message": winMessage}
         return render(request, "tictactoe_app/ttt.html", context)
     elif request.method == "POST":
         # try to make the move
@@ -70,3 +81,14 @@ def playGame(request, pk):
     else:
         # Handle other HTTP methods if needed
         return HttpResponse("Unsupported HTTP method", status=405)
+
+
+class GameListView(ListView):
+    model = Game
+    # paginate_by = 50  # if pagination is desired
+    ordering = ['-id']
+    template_name = 'tictactoe_app/games.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
