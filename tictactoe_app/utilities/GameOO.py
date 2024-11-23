@@ -1,6 +1,6 @@
 class GameOO:
     def __init__(self, board=None, playerTurn=1, winner=None):
-        self.board = 9*[''] if board is None else board
+        self.board = 9*[' '] if board is None else board
         self.playerTurn=playerTurn
         self.winner=winner
     
@@ -15,7 +15,7 @@ class GameOO:
             try:
                 square=int(square)
                 if(square>=0 and square<9):
-                    return (self.board[square]=='')
+                    return (self.board[square]==' ')
                 else:
                     return False
             except TypeError:
@@ -62,7 +62,7 @@ class GameOO:
             self.winner=self.playerTurn
         elif(self.board[6]==symbol and self.board[4]==symbol and self.board[2]==symbol):
             self.winner=self.playerTurn
-        elif('' not in self.board):
+        elif(' ' not in self.board):
             self.winner=3
         else:
             # 'Not over'

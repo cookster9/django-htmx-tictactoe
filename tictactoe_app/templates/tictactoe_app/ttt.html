@@ -1,22 +1,23 @@
 {% extends "tictactoe_app/base.html" %}
 
 {% block content %}
-{% if winner is not None %}
-    <p>Player {{ winner}} wins!</p>
-{% else %}
-    <p hx-get="/{{ id }}/winner/" hx-trigger="winnerFound from:body" hx-target="this" hx-swap="outerHTML" hidden>Winner</p>
-{% endif %}
-<p id="player-p">Player turn: {{ player_turn }}</p>
-{% if board %}
-    <ul>
-    {% for square in board %}
-        {% if forloop.counter0 == 3 or forloop.counter0 == 6%}
-            <br>
-        {% endif %}
-        <button class="w-10 h-10 rounded bg-sky-100 hover:bg-sky-300" hx-post="/{{ id }}/" hx-target="this" hx-swap="innerHTML" hx-vals='"coord": "{{ forloop.counter0 }}"'>{{ square }}</button>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>Game board not found</p>
-{% endif %}
+<div class="flex justify-center">
+    <div class="flex flex-col w-44">
+    {% if winner is not None %}
+        <p>Player {{ winner}} wins!</p>
+    {% else %}
+        <p hx-get="/{{ id }}/winner/" hx-trigger="winnerFound from:body" hx-target="this" hx-swap="outerHTML" hidden>Winner</p>
+    {% endif %}
+    <p id="player-p">Player turn: {{ player_turn }}</p>
+    {% if board %}
+        <div class="grid grid-cols-3 grid-rows-3 w-32 h-32">
+        {% for square in board %}
+            <button class="w-10 h-10 rounded bg-sky-100 hover:bg-sky-300" hx-post="/{{ id }}/" hx-target="this" hx-swap="innerHTML" hx-vals='"coord": "{{ forloop.counter0 }}"'>{{ square }}</button>
+        {% endfor %}
+        </div>
+    {% else %}
+        <p>Game board not found</p>
+    {% endif %}
+    </div>
+</div>
 {% endblock %}
