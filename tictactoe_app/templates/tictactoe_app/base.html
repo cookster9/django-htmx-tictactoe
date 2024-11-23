@@ -9,10 +9,7 @@
   <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <nav class="flex items-center justify-start p-4">
       <div class="p-2">
-        Home
-      </div>
-      <div class="p-2"> 
-        Games
+        <a href={% url 'startGame' %}>Home</a>
       </div>
     </nav>
     {% block content %}
