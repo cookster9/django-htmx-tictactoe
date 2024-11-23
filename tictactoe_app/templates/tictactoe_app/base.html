@@ -7,13 +7,20 @@
     <title>My test page</title>
   </head>
   <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-    <nav class="flex items-center justify-start p-4">
-      <div class="p-2">
-        <a href={% url 'startGame' %}>Home</a>
-      </div>
-      <div class="p-2">
-        <a href={% url 'gameList' %}>Game List</a>
-      </div>
+    <nav class="flex justify-start bg-blue-300 font-serif text-blue-950">
+      
+        <a class="" href={% url 'startGame' %}>
+          <div class="p-4 hover:bg-blue-500">
+            Home
+          </div>
+        </a>
+    
+        <a class="" href={% url 'gameList' %}>
+          <div class="p-4 hover:bg-blue-500">
+            Game List
+          </div>
+        </a>
+      
     </nav>
     {% block content %}
         <p>content</p>

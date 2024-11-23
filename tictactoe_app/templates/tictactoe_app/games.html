@@ -1,24 +1,25 @@
 {% extends "tictactoe_app/base.html" %}
 
 {% block content %}
+    <div class="flex text-lg p-4">
     {% if object_list is empty %}
         <p>No games yet!</p><a href={% url 'startGame' %}>Go Home</a>
     {% else %}
-        <table class="">
-            <tr>
-                <th>ID</th>
-                <th>Player Turn</th>
-                <th>Winner</th>
+        <table class="table w-80">
+            <tr class="font-medium bg-slate-200">
+                <th class="w-16">ID</th>
+                <th class="w-16">Player Turn</th>
+                <th class="w-16">Winner</th>
             </tr>
             {% for game in object_list %}
             <tr>
-                <td><a href="{% url 'playGame' pk=game.id %}">{{game.id}}</a></td>
-                <td>{% if game.winner is None %}
+                <td class="text-blue-600 text-right odd:bg-slate-100"><a href="{% url 'playGame' pk=game.id %}">{{game.id}}</a></td>
+                <td class="text-right odd:bg-slate-100">{% if game.winner is None %}
                         Player {{game.player_turn}}
                     {% else %}
                         Game Over
                     {% endif %}</td>
-                <td>{% if game.winner is None %}
+                <td class="text-right odd:bg-slate-100">{% if game.winner is None %}
                         In progress
                     {% elif game.winner == 3 %}
                         Tie
@@ -30,4 +31,7 @@
             {% endfor %}
         </table>
     {% endif %}
+    <div></div>
+    </div>
+    
 {% endblock %}

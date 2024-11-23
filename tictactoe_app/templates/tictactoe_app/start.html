@@ -1,8 +1,10 @@
 {% extends "tictactoe_app/base.html" %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    <button class="rounded p-2 hover:bg-blue-50 border border-blue-500" name="NewGame">New Game</button>
-</form>
+<div class="p-8">
+    <form method="post">
+        {% csrf_token %}
+        <button class="rounded p-2 bg-blue-50 hover:bg-blue-100 border border-blue-500 w-64 h-32 font-bold text-5xl" name="NewGame">New Game</button>
+    </form>
+</div>
 {% endblock %}
