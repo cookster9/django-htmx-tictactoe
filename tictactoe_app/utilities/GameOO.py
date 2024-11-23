@@ -52,6 +52,8 @@ class GameOO:
             self.winner=self.playerTurn
         elif(self.board[0]==symbol and self.board[4]==symbol and self.board[8]==symbol):
             self.winner=self.playerTurn
+        elif(self.board[0]==symbol and self.board[3]==symbol and self.board[6]==symbol):
+            self.winner=self.playerTurn
         elif(self.board[1]==symbol and self.board[4]==symbol and self.board[7]==symbol):
             self.winner=self.playerTurn
         elif(self.board[2]==symbol and self.board[5]==symbol and self.board[8]==symbol):
