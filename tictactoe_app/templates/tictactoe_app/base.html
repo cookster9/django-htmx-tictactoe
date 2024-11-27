@@ -7,19 +7,26 @@
     <title>My test page</title>
   </head>
   <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-    <nav class="flex justify-start bg-blue-300 font-serif text-blue-950">
+    <nav class="flex flex-auto bg-blue-300 font-serif text-blue-950">
+        <div class="flex justify-start w-1/2">
+          <a class="" href={% url 'startGame' %}>
+            <div class="p-4 hover:bg-blue-500">
+              Home
+            </div>
+          </a>
       
-        <a class="" href={% url 'startGame' %}>
-          <div class="p-4 hover:bg-blue-500">
-            Home
-          </div>
-        </a>
-    
-        <a class="" href={% url 'gameList' %}>
-          <div class="p-4 hover:bg-blue-500">
-            Game List
-          </div>
-        </a>
+          <a class="" href={% url 'gameList' %}>
+            <div class="p-4 hover:bg-blue-500">
+              Game List
+            </div>
+          </a>
+        </div>
+        
+        <div class="flex items-center justify-end w-1/2">
+          <a class="text-right" target="_blank" href='https://www.github.com/cookster9/chat-trader-app'>
+            <img class="w-10 m-2" src="{% static 'tictactoe_app/github-mark-white.png' %}">
+          </a>
+        </div>
       
     </nav>
     {% block content %}
