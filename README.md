@@ -6,3 +6,4 @@ Start tailwind watcher, which generates css as you add classes to html:
 tailwindcss -i ./tictactoe_app/static/tictactoe_app/input.css -o ./tictactoe_app/static/tictactoe_app/output.css --watch
 
 Prune tailwind output, which takes out anything you aren't using:
+tailwindcss -o ./tictactoe_app/static/tictactoe_app/output.css --minify
