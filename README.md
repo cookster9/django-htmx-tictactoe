@@ -20,11 +20,13 @@ python manage.py runserver
 Go to http://127.0.0.1:8000/
 
 # Concepts Used:
-## hx-swap-oop
+## hx-swap-oob
 https://htmx.org/examples/update-other-content/#oob
+![oob](./gifs/oob.gif)
 
 ## htmx events
 https://htmx.org/examples/update-other-content/#events
+![events](./gifs/event.gif)
 
 ## OOP Game logic
 Seen in the playGame view. Because we're stateless, it will create a new Game object every POST in order to run the game logic.
