@@ -22,10 +22,12 @@ Go to http://127.0.0.1:8000/
 # Concepts Used:
 ## hx-swap-oob
 https://htmx.org/examples/update-other-content/#oob
+
 ![oob](./gifs/oob.gif)
 
 ## htmx events
 https://htmx.org/examples/update-other-content/#events
+
 ![events](./gifs/event.gif)
 
 ## OOP Game logic
