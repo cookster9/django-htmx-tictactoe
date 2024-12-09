@@ -1,0 +1,6 @@
+include LICENSE
+include README.rst
+recursive-include tictactoe_app/static *
+recursive-include tictactoe_app/templates *
+recursive-include tictactoe_app/docs *
+recursive-include tictactoe_app/utilities *

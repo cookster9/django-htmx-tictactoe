@@ -7,18 +7,24 @@ Years ago I flubbed an interview question that asked me to implement tictactoe i
 # Install:
 ```
 git clone https://github.com/cookster9/django-htmx-tictactoe.git
-python -m venv .venv
-source ./venv/bin/activate
-pip install -r requirements.txt
-python manage.py migrate
 ```
+Quick start
+-----------
 
-To run:
+1. Add "tictactoe_app" to your INSTALLED_APPS setting like this::
 ```
-python manage.py runserver
+    INSTALLED_APPS = [
+        ...,
+        "tictactoe_app",
+    ]
 ```
+2. Include the tictactoe URLconf in your project urls.py like this::
 
-Go to http://127.0.0.1:8000/
+    path("tictactoe/", include("tictactoe_app.urls")),
+
+3. Run ``python manage.py migrate`` to create the models.
+
+4. Start the development server and visit the ``/tictactoe/`` URL to play.
 
 # Concepts Used:
 ## hx-swap-oob
