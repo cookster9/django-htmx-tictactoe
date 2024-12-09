@@ -6,7 +6,7 @@ Years ago I flubbed an interview question that asked me to implement tictactoe i
 
 # Install:
 ```
-git clone https://github.com/cookster9/django-htmx-tictactoe.git
+pip install git+https://github.com/cookster9/django-htmx-tictactoe.git
 ```
 Quick start
 -----------
