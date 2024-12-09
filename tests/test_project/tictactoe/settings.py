@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "tictactoe_app.apps.TictactoeAppConfig",
+    "tictactoe_app",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
