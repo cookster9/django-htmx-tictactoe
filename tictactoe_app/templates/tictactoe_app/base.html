@@ -9,12 +9,16 @@
   <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <nav class="flex flex-auto bg-blue-300 font-serif text-blue-950">
         <div class="flex justify-start w-1/2">
-          <a class="" href={% url 'startGame' %}>
+          <a class="" href="/">
             <div class="p-4 hover:bg-blue-500">
               Home
             </div>
           </a>
-      
+          <a class="" href={% url 'startGame' %}>
+            <div class="p-4 hover:bg-blue-500">
+              New Game
+            </div>
+          </a>
           <a class="" href={% url 'gameList' %}>
             <div class="p-4 hover:bg-blue-500">
               Game List
