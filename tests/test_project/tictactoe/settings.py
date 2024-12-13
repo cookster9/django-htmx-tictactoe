@@ -27,9 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+import sys
+import os
+
+APP_DIR =  Path(__file__).resolve().parent.parent.parent.parent
+APP_DIR = os.path.join(APP_DIR)
+
+sys.path.insert(0, APP_DIR)
 
 # Application definition
-
 INSTALLED_APPS = [
     "tictactoe_app",
     "django.contrib.admin",
