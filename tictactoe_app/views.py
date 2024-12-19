@@ -58,7 +58,7 @@ def playGame(request, pk):
                 winMessage = 'It''s a tie!'
             else:
                 winMessage = 'Game is broken!'
-        context = {"board": board_list, "id": str(gameFromDB.id), "player_turn": str(game.playerTurn)
+        context = {"board": board_list, "id": gameFromDB.id, "player_turn": str(game.playerTurn)
                    ,"winner_message": winMessage}
         return render(request, "tictactoe_app/ttt.html", context)
     elif request.method == "POST":
