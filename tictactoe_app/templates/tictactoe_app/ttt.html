@@ -7,7 +7,7 @@
     {% if board %}
         <div class="grid grid-cols-3 grid-rows-3">
         {% for square in board %}
-            <button class="w-28 h-28 border-2 border-white rounded bg-sky-100 hover:bg-sky-300" hx-post="/{{ id }}/" hx-target="this" hx-swap="innerHTML" hx-vals='"coord": "{{ forloop.counter0 }}"'>{{ square }}</button>
+            <button class="w-28 h-28 border-2 border-white rounded bg-sky-100 hover:bg-sky-300" hx-post="{% url 'playGame' pk=id %}" hx-target="this" hx-swap="innerHTML" hx-vals='"coord": "{{ forloop.counter0 }}"'>{{ square }}</button>
         {% endfor %}
         </div>
     {% else %}
@@ -16,7 +16,7 @@
     {% if winner_message is not None %}
         <p class="text-xl font-bold">{{ winner_message}}</p>
     {% else %}
-        <p hx-get="/{{ id }}/winner/" hx-trigger="winnerFound from:body" hx-target="this" hx-swap="outerHTML" hidden>Winner</p>
+        <p hx-get="{% url 'getWinner' pk=id %}" hx-trigger="winnerFound from:body" hx-target="this" hx-swap="outerHTML" hidden>Winner</p>
     {% endif %}
     </div>
 </div>
