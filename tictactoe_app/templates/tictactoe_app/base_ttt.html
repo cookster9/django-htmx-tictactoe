@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% comment %}
+This is to be able to override the base template in an installing project
+{% endcomment %}
+{% block extra_head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'tictactoe_app/output.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="flex p-10 justify-evenly">
+    <div class="flex-col font-serif text-blue-950 w-1/4">
+        <a class="" href={% url 'startGame' %}>
+          <div class="p-4 mt-4 bg-blue-300 hover:bg-blue-500 rounded text-center">
+            New Game
+          </div>
+        </a>
+        <a class="" href={% url 'gameList' %}>
+          <div class="p-4 mt-4 bg-blue-300 hover:bg-blue-500 rounded text-center">
+            Game List
+          </div>
+        </a>
+        <a class="text-right bg-blue-300" target="_blank" href='https://github.com/cookster9/django-htmx-tictactoe'>
+          <div class="p-4 mt-4 flex justify-center bg-blue-300 hover:bg-blue-500 rounded">
+            <img class="w-10" src="{% static 'tictactoe_app/github-mark-white.png' %}">
+          </div>
+        </a>
+    </div>
+    <div class="flex items-center justify-center">
+      {% block content_ttt %}
+      {% endblock %}
+    </div>
+  </div>
+{% endblock %}
