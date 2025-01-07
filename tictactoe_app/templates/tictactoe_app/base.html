@@ -1,0 +1,51 @@
+{% load static %}
+{% comment %}
+You probably want to override this in a project by using a project-level base.html
+In your project settings, add a base.html (maybe this one) to your template folder defined like this:
+"DIRS": [BASE_DIR / "templates"],
+{% endcomment %}
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    {% block extra_head %}
+    <!-- App-specific CSS can be included here -->
+    {% endblock %}
+    <title>My test page</title>
+  </head>
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <nav class="flex flex-auto bg-blue-300 font-serif text-blue-950">
+        <div class="flex justify-start w-1/2">
+          <a class="" href="/">
+            <div class="p-4 hover:bg-blue-500">
+              Home
+            </div>
+          </a>
+          <a class="" href={% url 'startGame' %}>
+            <div class="p-4 hover:bg-blue-500">
+              New Game
+            </div>
+          </a>
+          <a class="" href={% url 'gameList' %}>
+            <div class="p-4 hover:bg-blue-500">
+              Game List
+            </div>
+          </a>
+        </div>
+        
+        <div class="flex items-center justify-end w-1/2">
+          <a class="text-right" target="_blank" href='https://github.com/cookster9/django-htmx-tictactoe'>
+            <img class="w-10 m-2" src="{% static 'tictactoe_app/github-mark-white.png' %}">
+          </a>
+        </div>
+      
+    </nav>
+    {% block content %}
+        <p>content</p>
+    {% endblock %}
+  </body>
+  <!-- 
+  <script src="https://unpkg.com/htmx.org@2.0.3"></script> 
+   -->
+  <script src="{% static 'tictactoe_app/htmx.min.js' %}"></script>
+</html>
