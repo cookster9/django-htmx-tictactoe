@@ -1,6 +1,6 @@
-{% extends "tictactoe_app/base.html" %}
+{% extends "tictactoe_app/base_ttt.html" %}
 
-{% block content %}
+{% block content_ttt %}
     <div class="flex text-lg p-4">
     {% if object_list is empty %}
         <p>No games yet!</p><a href={% url 'startGame' %}>Go Home</a>
