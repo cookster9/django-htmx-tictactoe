@@ -3,6 +3,9 @@
 {% block content_ttt %}
 <div class="flex justify-center text-lg">
     <div class="flex flex-col w-auto h-auto">
+    {% if locked != "True" %}
+        <p id="lock-message">Game is locked by another session.</p>
+    {% endif %}
     <p id="player-p">Player turn: {{ player_turn }}</p>
     {% if board %}
         <div class="grid grid-cols-3 grid-rows-3">
